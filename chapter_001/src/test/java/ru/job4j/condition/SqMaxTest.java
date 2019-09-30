@@ -23,6 +23,8 @@ public class SqMaxTest {
     public void whenThridMax() {
         int result = SqMax.max(1, 2, 5,4);
         assertThat(result, is(5));
+        result = SqMax.max(9, 3, 11, 2);
+        assertThat(result, is(11));
     }
 
     @Test
