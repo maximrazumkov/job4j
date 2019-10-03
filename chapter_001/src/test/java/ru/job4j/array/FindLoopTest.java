@@ -40,6 +40,28 @@ public class FindLoopTest {
     }
 
     @Test
+    public void whenStartMoreFinish() {
+        int[] input = new int[] {5, 2, 10, 2, 4};
+        int value = 2;
+        int start = 3;
+        int finish = 2;
+        int result = FindLoop.indexOf(input, value, start, finish);
+        int expect = -1;
+        assertThat(result, is(expect));
+    }
+
+    @Test
+    public void whenStartEquelsFinish() {
+        int[] input = new int[] {5, 2, 10, 2, 4};
+        int value = 2;
+        int start = 3;
+        int finish = 3;
+        int result = FindLoop.indexOf(input, value, start, finish);
+        int expect = 3;
+        assertThat(result, is(expect));
+    }
+
+    @Test
     public void whenArrayInEmpty() {
         FindLoop find = new FindLoop();
         int[] input = new int[] {};
