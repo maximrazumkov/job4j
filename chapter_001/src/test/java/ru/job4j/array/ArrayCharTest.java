@@ -31,11 +31,19 @@ public class ArrayCharTest {
     }
 
     @Test
+    public void whenPrefIsEmptyThanFalse() {
+        char[] word = {'H', 'e', 'l', 'l', 'o'};
+        char[] pref = {};
+        boolean result = ArrayChar.startWith(word, pref);
+        assertThat(result, is(true));
+    }
+
+    @Test
     public void whenWordAndPrefIsEmptyThanFalse() {
         char[] word = {};
         char[] pref = {};
         boolean result = ArrayChar.startWith(word, pref);
-        assertThat(result, is(false));
+        assertThat(result, is(true));
     }
 
     @Test

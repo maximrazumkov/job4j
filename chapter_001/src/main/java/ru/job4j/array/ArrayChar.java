@@ -3,7 +3,7 @@ package ru.job4j.array;
 public class ArrayChar {
     public static boolean startWith(char[] word, char[] pref) {
 
-        if (word.length == 0 || word.length < pref.length) {
+        if (word.length < pref.length) {
             return false;
         }
 
