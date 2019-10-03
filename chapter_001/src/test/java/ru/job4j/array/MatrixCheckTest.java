@@ -56,5 +56,18 @@ public class MatrixCheckTest {
         boolean result = MatrixCheck.isWith(input);
         assertThat(result, is(true));
     }
+
+    @Test
+    public void whenDataMonoFirstRowByTrueThenTrue2() {
+        char[][] input = {
+                {' ', ' ', ' ', ' ', ' '},
+                {' ', ' ', ' ', ' ', ' '},
+                {' ', ' ', ' ', ' ', ' '},
+                {' ', ' ', ' ', ' ', ' '},
+                {' ', ' ', ' ', ' ', ' '},
+        };
+        boolean result = MatrixCheck.isWith(input);
+        assertThat(result, is(false));
+    }
 }
 
