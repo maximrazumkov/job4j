@@ -18,6 +18,6 @@ public class DummyBotTest {
 
     @Test
     public void whenUnknownBot() {
-        assertThat(DummyBot.answer("Сколько будет 2 + 2?"),is("Это ставит меня в тупик. Задайте другой вопрос."));
+        assertThat(DummyBot.answer("Сколько будет 2 + 2?"), is("Это ставит меня в тупик. Задайте другой вопрос."));
     }
 }

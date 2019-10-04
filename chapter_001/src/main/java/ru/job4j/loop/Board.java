@@ -1,8 +1,8 @@
 package ru.job4j.loop;
 
 public class Board {
-    public static void main(String[] args){
-        paint(5,4);
+    public static void main(String[] args) {
+        paint(5, 4);
         System.out.println();
         paint(4, 4);
     }

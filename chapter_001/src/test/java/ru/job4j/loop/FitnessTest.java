@@ -9,7 +9,7 @@ public class FitnessTest {
     @Test
     public void whenIvanGreetNik() {
         Fitness fitness = new Fitness();
-        int countMouth = fitness.calc(100,95);
+        int countMouth = fitness.calc(100, 95);
         assertThat(countMouth, is(0));
     }
 
