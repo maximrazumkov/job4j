@@ -5,7 +5,6 @@ public class Check {
         if (data.length == 0) {
             return true;
         }
-
         boolean result = data[0];
         for (int i = 0; i < data.length; ++i) {
             if (result != data[i]) {

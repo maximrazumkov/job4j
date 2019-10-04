@@ -7,13 +7,11 @@ public class Fitness {
         if (nik < ivan) {
             return month;
         }
-
         while (ivan <= nik) {
             ivan *= 3;
             nik *= 2;
             ++month;
         }
-
         return month;
     }
 }
