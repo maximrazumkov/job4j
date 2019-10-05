@@ -14,17 +14,18 @@ public class Merge {
         int indexLeft = 0;
         int indexRight = 0;
         for (int i = 0; i < rsl.length; ++i) {
-            if ((indexLeft < left.length) && (left[indexLeft] < right[indexRight])) {
-                rsl[i] = left[indexLeft];
-                if (indexLeft < left.length) {
-                    ++indexLeft;
-                }
+            if (indexLeft == left.length) {
+                rsl[i] = right[indexRight++];
+                continue;
+            }
+            if (indexRight == right.length) {
+                rsl[i] = left[indexLeft++];
+                continue;
+            }
+            if (left[indexLeft] < right[indexRight]) {
+                rsl[i] = left[indexLeft++];
             } else {
-                rsl[i] = right[indexRight];
-                if (indexRight < right.length - 1
-                ) {
-                    ++indexRight;
-                }
+                rsl[i] = right[indexRight++];
             }
         }
         return rsl;
@@ -35,6 +36,8 @@ public class Merge {
         int[] rsl = process.merge(
                 new int[] {1, 3, 5},
                 new int[] {2, 4}
+                //new int[] {1, 5, 5},
+                //new int[] {2, 4}
         );
         System.out.println(Arrays.toString(rsl));
     }

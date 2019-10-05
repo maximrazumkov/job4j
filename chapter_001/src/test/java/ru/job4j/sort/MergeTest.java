@@ -51,12 +51,12 @@ public class MergeTest {
     }
 
     @Test
-    public void whenLeftEmpty() {
+    public void whenRightGreat() {
         Merge algo = new Merge();
-        int[] expect = {1, 2, 3, 4};
+        int[] expect = {1, 2, 4, 5, 5};
         int[] result = algo.merge(
-                new int[] {},
-                new int[] {1, 2, 3, 4}
+                new int[] {1, 5, 5},
+                new int[] {2, 4}
         );
         assertThat(result, is(expect));
     }
