@@ -12,7 +12,10 @@ public class PointTest {
         int x2 = 3;
         int y2 = -1;
         double expected = Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2));
-        double out = Point.distance(x1, y1, x2, y2);
+        Point a = new Point(x1, y1);
+        Point b = new Point(x2, y2);
+
+        double out = a.distance(b);
         Assert.assertEquals(expected, out, 0.01);
     }
 }
