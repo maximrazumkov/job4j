@@ -47,14 +47,12 @@ public class StartUI {
         System.out.println("=== Delete Item ====");
         System.out.print("Enter id: ");
         String id = scanner.nextLine();
-        Item item = tracker.findById(id);
-        if (item == null) {
+        boolean result = tracker.delete(id);
+        if (result) {
+            System.out.println("=== Deleted Item ====");
+        } else {
             System.out.println("Заявка не найдена");
-            System.out.println(" ");
-            return;
         }
-        tracker.delete(id);
-        System.out.println("=== Deleted Item ====");
     }
 
     private void findByIdItem(Scanner scanner, Tracker tracker) {
@@ -105,27 +103,17 @@ public class StartUI {
         System.out.println("=== Edit Item ====");
         System.out.print("Enter id: ");
         String id = scanner.nextLine();
-        Item item = tracker.findById(id);
-        if (item == null) {
-            System.out.println("Заявка не найдена");
-            System.out.println(" ");
-            return;
-        }
-        System.out.println(String.format("Название заявки: %s", item.getName()));
-        System.out.println("0. Изменить название заявки");
-        System.out.println("1. Нажмите цифру, чтобы выйти в главное меню");
-        System.out.print("Enter: ");
-        int select = Integer.valueOf(scanner.nextLine());
-        if (select != 0) {
-            System.out.println(" ");
-            return;
-        }
         System.out.print("Введите название: ");
         String name = scanner.nextLine();
-        item.setName(name);
-        tracker.replace(id, item);
-        System.out.println("=== Edited Item ====");
-        System.out.println(item.getName() + " ");
+        Item item = new Item(name);
+        item.setId(id);
+        boolean result = tracker.replace(id, item);
+        if (result) {
+            System.out.println("=== Edited Item ====");
+            System.out.println(item.getName() + " ");
+        } else {
+            System.out.println("Заявка не найдена");
+        }
     }
 
 
