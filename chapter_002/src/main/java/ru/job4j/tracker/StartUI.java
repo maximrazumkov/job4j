@@ -1,10 +1,13 @@
 package ru.job4j.tracker;
 
+import javax.security.auth.Subject;
 import java.util.Scanner;
 
 public class StartUI {
     public void init(Scanner scanner, Tracker tracker) {
         boolean run = true;
+        String[] answers = {"Fix PC"};
+        Input input = new StubInput(answers);
         while (run) {
             int select;
             do {
@@ -16,7 +19,7 @@ public class StartUI {
                 System.out.println("Выберите существующий пункт меню.");
             } while (true);
             if (select == 0) {
-                addItem(scanner, tracker);
+                createItem(input, tracker);
             } else if (select == 1) {
                 findAllItems(scanner, tracker);
             } else if (select == 2) {
@@ -34,10 +37,10 @@ public class StartUI {
         }
     }
 
-    private void addItem(Scanner scanner, Tracker tracker) {
+    public void createItem(Input input, Tracker tracker) {
         System.out.println("=== Create a new Item ====");
         System.out.print("Enter name: ");
-        String name = scanner.nextLine();
+        String name = input.askStr("");
         Item item = new Item(name);
         tracker.add(item);
         System.out.println("=== Created a new Item ====");
