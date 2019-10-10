@@ -2,11 +2,11 @@ package ru.job4j.tracker;
 
 public class Builder extends Engineer {
 
-    public Сonstruction build(Material material) {
-        return new Сonstruction();
+    public Constraction build(Material material) {
+        return new Constraction();
     }
 
-    public void tearDown(Сonstruction construction) {
+    public void tearDown(Constraction construction) {
 
     }
 }

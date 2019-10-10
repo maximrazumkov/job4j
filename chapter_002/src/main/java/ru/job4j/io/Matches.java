@@ -7,7 +7,7 @@ public class Matches {
         int count = 11;
         Scanner scanner = new Scanner(System.in);
         int step = 1;
-        while(true) {
+        while (true) {
             boolean exit = false;
             int player = ((step++ % 2) != 0) ? 1 : 2;
             do {

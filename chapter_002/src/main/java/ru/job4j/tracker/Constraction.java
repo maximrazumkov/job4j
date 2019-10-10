@@ -1,4 +1,4 @@
 package ru.job4j.tracker;
 
-public class Сonstruction {
+public class Constraction {
 }

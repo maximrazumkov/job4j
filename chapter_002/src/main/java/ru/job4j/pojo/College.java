@@ -10,12 +10,12 @@ public class College {
         student.setMiddlename("Sergeevich");
         student.setGroup("DEK-501");
         student.setDate(new Date());
-        System.out.println("Student: " +
-                "firstname: " + student.getFirstname() +
-                ", surename: " + student.getSurename() +
-                ", middlename: " + student.getMiddlename() +
-                ", group: " + student.getGroup() +
-                ", date: " + student.getDate()
+        System.out.println("Student: "
+                + "firstname: " + student.getFirstname()
+                + ", surename: " + student.getSurename()
+                + ", middlename: " + student.getMiddlename()
+                + ", group: " + student.getGroup()
+                + ", date: " + student.getDate()
         );
     }
 }

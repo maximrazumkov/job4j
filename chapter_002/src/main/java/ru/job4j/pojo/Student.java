@@ -51,12 +51,12 @@ public class Student {
 
     @Override
     public String toString() {
-        return "Student{" +
-                "firstname='" + firstname + '\'' +
-                ", surename='" + surename + '\'' +
-                ", middlename='" + middlename + '\'' +
-                ", group='" + group + '\'' +
-                ", date=" + date +
-                '}';
+        return "Student{"
+                + "firstname='" + firstname + '\''
+                + ", surename='" + surename + '\''
+                + ", middlename='" + middlename + '\''
+                + ", group='" + group + '\''
+                + ", date=" + date
+                + '}';
     }
 }

@@ -28,9 +28,9 @@ public class PointTest {
         int y2 = -1;
         int z2 = -2;
         double expected = Math.sqrt(
-                Math.pow(x2 - x1, 2) +
-                        Math.pow(y2 - y1, 2) +
-                        Math.pow(z2 - z1, 2)
+                Math.pow(x2 - x1, 2)
+              + Math.pow(y2 - y1, 2)
+              + Math.pow(z2 - z1, 2)
         );
         Point a = new Point(x1, y1, z1);
         Point b = new Point(x2, y2, z2);
