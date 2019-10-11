@@ -32,7 +32,7 @@ public class StartUI {
         }
     }
 
-    public void createItem(Input input, Tracker tracker) {
+    public static void createItem(Input input, Tracker tracker) {
         System.out.println("=== Create a new Item ====");
         System.out.print("Enter name: ");
         String name = input.askStr("");
@@ -41,7 +41,7 @@ public class StartUI {
         System.out.println("=== Created a new Item ====");
     }
 
-    private void deleteItem(Input input, Tracker tracker) {
+    private static void deleteItem(Input input, Tracker tracker) {
         System.out.println("=== Delete Item ====");
         System.out.print("Enter id: ");
         String id = input.askStr("");
@@ -53,7 +53,7 @@ public class StartUI {
         }
     }
 
-    private void findByIdItem(Input input, Tracker tracker) {
+    private static void findByIdItem(Input input, Tracker tracker) {
         System.out.println("=== Find by id Item ====");
         System.out.print("Enter id: ");
         String id = input.askStr("");
@@ -67,7 +67,7 @@ public class StartUI {
         System.out.println("=== Found by id Item ====");
     }
 
-    private void findByNameItem(Input input, Tracker tracker) {
+    private static void findByNameItem(Input input, Tracker tracker) {
         System.out.println("=== Find by name items ====");
         System.out.print("Enter name: ");
         String name = input.askStr("");
@@ -83,7 +83,7 @@ public class StartUI {
         System.out.println("=== Found by name items ====");
     }
 
-    private void findAllItems(Tracker tracker) {
+    private static void findAllItems(Tracker tracker) {
         System.out.println("=== Find All Item ====");
         Item[] items = tracker.findAll();
         if (items.length == 0) {
@@ -97,7 +97,7 @@ public class StartUI {
         System.out.println("=== Found All Item ====");
     }
 
-    private void replaceItems(Input input, Tracker tracker) {
+    private static void replaceItems(Input input, Tracker tracker) {
         System.out.println("=== Edit Item ====");
         System.out.print("Enter id: ");
         String id = input.askStr("");
