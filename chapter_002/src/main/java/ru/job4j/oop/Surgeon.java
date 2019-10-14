@@ -1,4 +1,7 @@
-package ru.job4j.tracker;
+package ru.job4j.oop;
+
+import ru.job4j.oop.Doctor;
+import ru.job4j.oop.Pacient;
 
 public class Surgeon extends Doctor {
 

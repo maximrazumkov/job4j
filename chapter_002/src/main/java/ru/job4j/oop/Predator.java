@@ -1,4 +1,6 @@
-package ru.job4j.tracker;
+package ru.job4j.oop;
+
+import ru.job4j.oop.Animal;
 
 public class Predator extends Animal {
 
