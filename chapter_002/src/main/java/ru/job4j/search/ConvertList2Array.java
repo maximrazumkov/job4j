@@ -1,9 +1,10 @@
 package ru.job4j.search;
 
+import java.util.LinkedList;
 import java.util.List;
 
 public class ConvertList2Array {
-    public int[][] toArray (List<Integer> list, int rows) {
+    public int[][] toArray(List<Integer> list, int rows) {
         int cells = (list.size() % rows == 0) ? list.size() / rows : list.size() / rows + 1;
         int[][] array = new int[rows][cells];
         int row = 0;
@@ -18,5 +19,15 @@ public class ConvertList2Array {
             }
         }
         return array;
+    }
+
+    public List<Integer> convert(List<int[]> list) {
+        List<Integer> result = new LinkedList<>();
+        list.forEach(ints -> {
+            for (int i : ints) {
+                result.add(i);
+            }
+        });
+        return result;
     }
 }
