@@ -17,11 +17,17 @@ public class PriorityQueue {
         if (flag) {
             tasks.add(task);
         }
-        for (int i = 0; !flag; ++i) {
-            if (task.getPriority() < tasks.get(i).getPriority()) {
+        int i = 0;
+        for (Task t : tasks) {
+            if (task.getPriority() < t.getPriority()) {
                 tasks.add(i, task);
-                flag = true;
+                flag = false;
+                break;
             }
+            ++i;
+        }
+        if (flag) {
+            tasks.add(task);
         }
     }
 
