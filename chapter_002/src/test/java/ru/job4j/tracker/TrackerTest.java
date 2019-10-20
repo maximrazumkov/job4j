@@ -2,6 +2,8 @@ package ru.job4j.tracker;
 
 import org.junit.Test;
 
+import java.util.List;
+
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThat;
@@ -43,7 +45,7 @@ public class TrackerTest {
         assertEquals(null, tracker.findById(item2.getId()));
         Item item5 = new Item("test5");
         tracker.add(item5);
-        Item[] items = tracker.findAll();
+        List<Item> items = tracker.findAll();
         result = true;
         for (Item item : items) {
             if (item == null) {
@@ -70,7 +72,7 @@ public class TrackerTest {
         boolean result = tracker.delete(item5.getId());
         assertThat(result, is(false));
         assertEquals(null, tracker.findById(item5.getId()));
-        Item[] items = tracker.findAll();
+        List<Item> items = tracker.findAll();
         result = true;
         for (Item item : items) {
             if (item == null) {
@@ -133,10 +135,10 @@ public class TrackerTest {
         tracker.add(item3);
         tracker.add(item4);
         tracker.add(item5);
-        Item[] items = tracker.findByName(item2.getName());
+        List<Item> items = tracker.findByName(item2.getName());
         boolean result = true;
-        for (int i = 0; i < items.length; ++i) {
-            if (!items[i].getName().equals(item2.getName())) {
+        for (Item item : items) {
+            if (!item.getName().equals(item2.getName())) {
                 result = false;
                 break;
             }
@@ -157,7 +159,7 @@ public class TrackerTest {
         tracker.add(item3);
         tracker.add(item4);
         tracker.add(item5);
-        Item[] items = tracker.findByName("not test");
+        List<Item> items = tracker.findByName("not test");
         boolean result = true;
         for (Item item : items) {
             if (!item.getName().equals(item2.getName())) {
@@ -182,7 +184,7 @@ public class TrackerTest {
         tracker.add(item3);
         tracker.add(item4);
         tracker.add(item5);
-        Item[] items = tracker.findAll();
-        assertThat(items.length, is(5));
+        List<Item> items = tracker.findAll();
+        assertThat(items.size(), is(5));
     }
 }

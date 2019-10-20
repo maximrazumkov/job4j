@@ -1,5 +1,7 @@
 package ru.job4j.tracker;
 
+import java.util.List;
+
 public class TrackerSingleStaticFinalField {
     private static final TrackerSingleStaticFinalField instance = new TrackerSingleStaticFinalField();
     private final Tracker tracker = new Tracker();
@@ -23,11 +25,11 @@ public class TrackerSingleStaticFinalField {
         return this.tracker.delete(id);
     }
 
-    public Item[] findAll() {
+    public List<Item> findAll() {
         return this.tracker.findAll();
     }
 
-    public Item[] findByName(String key) {
+    public List<Item> findByName(String key) {
         return this.tracker.findByName(key);
     }
 
