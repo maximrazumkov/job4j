@@ -10,6 +10,15 @@ public class ConvertList2Array {
         int row = 0;
         int cell = 0;
         int size = list.size();
+        for (int i : list) {
+            int num = i < size ? list.get(i) : 0;
+            array[row][cell++] = num;
+            if (cell == cells) {
+                cell = 0;
+                ++row;
+            }
+        }
+        /*
         for (int i = 0; row < rows; ++i) {
             int num = i < size ? list.get(i) : 0;
             array[row][cell++] = num;
@@ -18,6 +27,7 @@ public class ConvertList2Array {
                 ++row;
             }
         }
+        */
         return array;
     }
 
