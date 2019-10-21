@@ -3,14 +3,14 @@ package ru.job4j.tracker;
 import java.util.List;
 
 public class TrackerSingleStaticFinalField {
-    private static final TrackerSingleStaticFinalField instance = new TrackerSingleStaticFinalField();
+    private static final TrackerSingleStaticFinalField INSTANCE = new TrackerSingleStaticFinalField();
     private final Tracker tracker = new Tracker();
 
     private TrackerSingleStaticFinalField() {
     }
 
     public static TrackerSingleStaticFinalField getInstance() {
-        return instance;
+        return INSTANCE;
     }
 
     public Item add(Item item) {

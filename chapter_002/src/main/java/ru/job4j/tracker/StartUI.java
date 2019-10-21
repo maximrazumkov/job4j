@@ -24,7 +24,7 @@ public class StartUI {
         Input input = new ConsoleInput();
         Input validate = new ValidateInput(input);
         Tracker tracker = new Tracker();
-        ArrayList<UserAction> actions = new ArrayList<UserAction>(){{
+        ArrayList<UserAction> actions = new ArrayList<UserAction>() { {
                 add(new CreateAction(0, "Add item"));
                 add(new ReplaceAction(1, "Replace item"));
                 add(new DeleteAction(2, "Delete item"));
@@ -32,7 +32,7 @@ public class StartUI {
                 add(new FindByIdAction(4, "Find by id item"));
                 add(new FindByNameAction(5, "Find by name item"));
                 add(new ExitAction(6, "Exit"));
-        }};
+        } };
         new StartUI().init(validate, tracker, actions);
     }
 }

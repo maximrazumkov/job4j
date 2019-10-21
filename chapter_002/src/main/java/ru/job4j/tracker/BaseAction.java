@@ -23,8 +23,12 @@ public abstract class BaseAction implements UserAction {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
         BaseAction that = (BaseAction) o;
         return key == that.key;
     }
