@@ -11,11 +11,8 @@ public class ListCompare implements Comparator<String> {
             int rightSimbol = (i < right.length()) ? right.charAt(i) : -1;
             if ((leftSimbol == -1) && (rightSimbol == -1)) {
                 break;
-            } else if (leftSimbol < rightSimbol) {
-                result = -1;
-            } else if (rightSimbol < leftSimbol) {
-                result = 1;
             }
+            result = Integer.compare(leftSimbol, rightSimbol);
         }
         return result;
     }
