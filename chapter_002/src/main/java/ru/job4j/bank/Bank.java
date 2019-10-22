@@ -30,38 +30,31 @@ public class Bank {
 
     public List<Account> getUserAccounts(String passport) {
         User user = new User(passport);
-        return this.accounts.get(user);
+        List<Account> accounts = this.accounts.get(user);
+        return accounts != null ? accounts : new ArrayList<>();
     }
 
-    public boolean transferMoney (
+    public boolean transferMoney(
             String srcPassport, String srcRequisite,
             String destPassport, String dstRequisite,
             double amount
     ) {
         boolean result = true;
         List<Account> srcAccounts = getUserAccounts(srcPassport);
-        if (srcAccounts == null) {
-            result = false;
-        }
         List<Account> destAccounts = getUserAccounts(destPassport);
-        if (destAccounts == null) {
+        Account srcAccount = getAccount(srcAccounts, srcRequisite);
+        if (srcAccount == null || (srcAccount.getValue() < amount)) {
             result = false;
         }
+
+        Account dstAccount = getAccount(destAccounts, dstRequisite);
+        if (srcAccount == null) {
+            result = false;
+        }
+
         if (result) {
-            Account srcAccount = getAccount(srcAccounts, srcRequisite);
-            if (srcAccount == null || (srcAccount.getValue() < amount)) {
-                result = false;
-            }
-
-            Account dstAccount = getAccount(destAccounts, dstRequisite);
-            if (dstAccount == null) {
-                result = false;
-            }
-
-            if (result) {
-                dstAccount.setValue(dstAccount.getValue() + amount);
-                srcAccount.setValue(srcAccount.getValue() - amount);
-            }
+            dstAccount.setValue(dstAccount.getValue() + amount);
+            srcAccount.setValue(srcAccount.getValue() - amount);
         }
         return result;
 

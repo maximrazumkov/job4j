@@ -41,7 +41,7 @@ public class BankTest {
     public void whenNotExistUser() {
         User user = new User("userPassport");
         List<Account> result = bank.getUserAccounts(user.getPassport());
-        List<Account> expect = null;
+        List<Account> expect = new ArrayList<>();
         assertThat(result, is(expect));
     }
 
@@ -51,7 +51,7 @@ public class BankTest {
         bank.addUser(user);
         bank.deleteUser(user);
         List<Account> result = bank.getUserAccounts(user.getPassport());
-        List<Account> expect = null;
+        List<Account> expect = new ArrayList<>();
         assertThat(result, is(expect));
     }
 
@@ -96,7 +96,7 @@ public class BankTest {
         bank.addAccountToUser(user.getPassport(), account);
         bank.deleteAccountFromUser(user.getPassport(), account);
         List<Account> result = bank.getUserAccounts(user.getPassport());
-        List<Account> expect = null;
+        List<Account> expect = new ArrayList<>();
         assertThat(result, is(expect));
     }
 
