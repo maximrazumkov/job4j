@@ -6,7 +6,7 @@ public class ListCompare implements Comparator<String> {
     @Override
     public int compare(String left, String right) {
         int result = 0;
-        int size = left.length() < right.length() ? left.length() : right.length();
+        int size = Math.min(left.length(), right.length());
         for (int i = 0; (i < size) && (result == 0); ++i) {
             char leftSimbol = left.charAt(i);
             char rightSimbol = right.charAt(i);
