@@ -22,7 +22,7 @@ public class StartUITest {
                 new String[] {"0"}
         );
         StubAction action = new StubAction(0, "Stub action");
-        new StartUI().init(input, new Tracker(), new ArrayList<UserAction>() { { add(action); } });
+        new StartUI(System.out::println).init(input, new Tracker(), new ArrayList<UserAction>() { { add(action); } });
         String expect = new StringJoiner(System.lineSeparator(), "", System.lineSeparator())
                 .add("Menu.")
                 .add("0 : Stub action")
@@ -38,7 +38,7 @@ public class StartUITest {
                 new String[] {"0"}
         );
         StubAction action = new StubAction(0, "Stub action");
-        new StartUI().init(input, new Tracker(), new ArrayList<UserAction>() { { add(action); } });
+        new StartUI(System.out::println).init(input, new Tracker(), new ArrayList<UserAction>() { { add(action); } });
         assertThat(action.isCall(), is(true));
     }
 }
