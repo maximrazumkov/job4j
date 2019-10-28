@@ -1,9 +1,11 @@
 package ru.job4j.tracker;
 
+import java.util.function.Consumer;
+
 public class ExitAction extends BaseAction {
 
-    public ExitAction(int key, String name) {
-        super(key, name);
+    public ExitAction(int key, String name, Consumer<String> output) {
+        super(key, name, output);
     }
 
     @Override

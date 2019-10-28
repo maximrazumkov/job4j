@@ -1,11 +1,12 @@
 package ru.job4j.tracker;
 
+import java.util.function.Consumer;
+
 public class StubAction extends BaseAction {
     private boolean call = false;
 
-    public StubAction(int key, String name) {
-        super(key, name);
-        this.call = call;
+    public StubAction(int key, String name, Consumer<String> output) {
+        super(key, name, output);
     }
 
     @Override

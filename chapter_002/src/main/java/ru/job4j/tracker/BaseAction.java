@@ -1,14 +1,22 @@
 package ru.job4j.tracker;
 
 import java.util.Objects;
+import java.util.function.Consumer;
 
 public abstract class BaseAction implements UserAction {
     private final int key;
     private final String name;
+    private final Consumer<String> output;
 
-    protected BaseAction(final int key, final String name) {
+    protected BaseAction(final int key, final String name, Consumer<String> output) {
         this.key = key;
         this.name = name;
+        this.output = output;
+    }
+
+    @Override
+    public Consumer<String> getOutput() {
+        return output;
     }
 
     @Override
