@@ -22,4 +22,28 @@ public class ProfilesTest {
         List<Address> result = profiles.collect(profileList);
         assertThat(result, is(expect));
     }
+
+    @Test
+    public void whenReturnAddressListSortAndDistinct() {
+        Profiles profiles = new Profiles();
+        List<Address> expect = new ArrayList<>();
+        List<Profile> profileList = new ArrayList<>();
+        Address address = new Address("Moscow", "Chengarsky Bulvar", 5, 10);
+        expect.add(address);
+        profileList.add(new Profile(address));
+
+        address = new Address("Kiev", "Bogatovo", 10, 20);
+        expect.add(address);
+        profileList.add(new Profile(address));
+
+        address = new Address("London", "Temza street", 15, 15);
+        expect.add(address);
+        profileList.add(new Profile(address));
+
+        address = new Address("Moscow", "Chengarsky Bulvar", 5, 10);
+        profileList.add(new Profile(address));
+        List<Address> result = profiles.distinct(profileList);
+        expect.sort((addr1, addr2) -> addr1.getCity().compareTo(addr2.getCity()));
+        assertThat(result, is(expect));
+    }
 }
