@@ -3,9 +3,7 @@ package ru.job4j.stream;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
@@ -42,6 +40,16 @@ public class SchoolTest {
     public void when10C() {
         List<Student> expect = Arrays.asList(new Student(12), new Student(9));
         List<Student> result = school.collect(students, student -> student.getScore() < 50);
+        assertThat(result, is(expect));
+    }
+
+    @Test
+    public void whenListStudentsToMapStudents() {
+        Map<String, Student> expect = new HashMap<>();
+        expect.put("Kelly", new Student(12, "Kelly"));
+        expect.put("Kevin", new Student(9, "Kevin"));
+        List<Student> studentlist = Arrays.asList(new Student(12, "Kelly"), new Student(9, "Kevin"));
+        Map<String, Student> result = school.toMap(studentlist);
         assertThat(result, is(expect));
     }
 }
