@@ -15,7 +15,7 @@ public class DepartureTest {
     private Departure departure;
 
     @Before
-    public void Departure() {
+    public void initDeparture() {
         this.departure = new Departure();
         List<String> departures = new ArrayList<String>(Arrays.asList(
                 "K1\\SK1", "K1\\SK2", "K1\\SK1\\SSK1", "K1\\SK1\\SSK2", "K2", "K2\\SK1\\SSK1", "K2\\SK1\\SSK2", "K2\\SK1", "K1"

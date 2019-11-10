@@ -49,15 +49,19 @@ public class Departure {
 
     @Override
     public String toString() {
-        return "Departure{" +
-                "orgs=" + orgs +
-                '}';
+        return "Departure{"
+                + "orgs=" + orgs
+                + '}';
     }
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
         Departure departure = (Departure) o;
         return Objects.equals(orgs, departure.orgs);
     }
