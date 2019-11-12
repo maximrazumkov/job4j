@@ -14,12 +14,12 @@ public class EvenIterator implements Iterator<Integer> {
     @Override
     public boolean hasNext() {
         boolean result = false;
-        while (this.index < this.values.length) {
-            if ((this.values[this.index] % 2) == 0) {
+        while (index < values.length) {
+            if ((values[index] % 2) == 0) {
                 result = true;
                 break;
             }
-            ++this.index;
+            ++index;
         }
         return result;
     }

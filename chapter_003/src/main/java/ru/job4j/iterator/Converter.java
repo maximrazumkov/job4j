@@ -24,7 +24,7 @@ public class Converter {
             boolean result = subIt != null;
             while (result) {
                 result = subIt.hasNext();
-                if (result) {
+                if (subIt.hasNext()) {
                     break;
                 }
                 result = it.hasNext();
