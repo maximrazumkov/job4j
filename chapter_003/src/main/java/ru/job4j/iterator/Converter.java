@@ -11,9 +11,10 @@ public class Converter {
             @Override
             public boolean hasNext() {
                 boolean result = true;
+
                 while (subIt == null || !subIt.hasNext()) {
-                    result = it.hasNext();
-                    if (!result) {
+                    if (!it.hasNext()) {
+                        result = false;
                         break;
                     }
                     subIt = it.next();
