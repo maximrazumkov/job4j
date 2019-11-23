@@ -1,4 +1,4 @@
-package ru.job4j.generic;
+package ru.job4j.collection.generic;
 
 public abstract class Base {
     private final String id;
