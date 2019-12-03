@@ -21,10 +21,7 @@ public class SimpleArrayContainer<T> implements Iterable<T> {
     }
 
     public void add(T element) {
-        if (index == size) {
-            size *= 2;
-            elements = Arrays.copyOf(elements, size);
-        }
+        ensureCapacity();
         elements[index++] = element;
         ++modCount;
     }
@@ -35,6 +32,13 @@ public class SimpleArrayContainer<T> implements Iterable<T> {
 
     public int size() {
         return index;
+    }
+
+    private void ensureCapacity() {
+        if (index == size) {
+            size *= 2;
+            elements = Arrays.copyOf(elements, size);
+        }
     }
 
     @Override
