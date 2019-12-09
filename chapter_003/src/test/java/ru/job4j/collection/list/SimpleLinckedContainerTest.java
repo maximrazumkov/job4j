@@ -33,6 +33,33 @@ public class SimpleLinckedContainerTest {
     }
 
     @Test
+    public void wheneDeleteFirstElement() {
+        assertThat(container.size(), is(4));
+        assertThat(container.get(0), is(8));
+        container.delete(0);
+        assertThat(container.get(0), is(7));
+        assertThat(container.size(), is(3));
+    }
+
+    @Test
+    public void wheneDeleteLastElement() {
+        int lastIdx = container.size() - 1;
+        assertThat(container.size(), is(4));
+        assertThat(container.get(lastIdx), is(5));
+        container.delete(lastIdx);
+        assertThat(container.get(lastIdx - 1), is(6));
+        assertThat(container.size(), is(3));
+    }
+
+    @Test
+    public void wheneDeleteMiddleElement() {
+        assertThat(container.size(), is(4));
+        assertThat(container.get(2), is(6));
+        container.delete(2);
+        assertThat(container.get(2), is(5));
+    }
+
+    @Test
     public void whenAddNewElementAndNewSizeConteiner() {
         container.add(10);
         assertThat(container.size(), is(5));

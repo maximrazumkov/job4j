@@ -27,6 +27,24 @@ public class SimpleLinkedList<T> implements Iterable<T> {
         return res.data;
     }
 
+    public T delete(int index) {
+        Node<T> res = first;
+        Node<T> preview = first;
+        if (index == 0) {
+            first = first.next;
+        }
+        for (int i = 0; i < index; ++i) {
+            preview = res;
+            res = res.next;
+            if (i == index - 1) {
+                preview.next = res.next;
+            }
+        }
+        --size;
+        --modCount;
+        return res.data;
+    }
+
     public int size() {
         return size;
     }
