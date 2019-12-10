@@ -30,6 +30,9 @@ public class SimpleLinkedList<T> implements Iterable<T> {
     public T delete(int index) {
         Node<T> res = first;
         Node<T> preview = first;
+        if (size <= index) {
+            throw new NoSuchElementException();
+        }
         if (index == 0) {
             first = first.next;
         }
@@ -47,6 +50,10 @@ public class SimpleLinkedList<T> implements Iterable<T> {
 
     public int size() {
         return size;
+    }
+
+    public boolean isEmpty() {
+        return size == 0;
     }
 
     @Override
