@@ -22,9 +22,7 @@ public class SimpleSet<T> implements Iterable<T> {
 
     private boolean isDuplicate(T value) {
         boolean result = false;
-        Iterator<T> itr = list.iterator();
-        while (itr.hasNext()) {
-            T val = itr.next();
+        for (T val: list) {
             if (val.equals(value)) {
                 result = true;
                 break;
@@ -35,24 +33,6 @@ public class SimpleSet<T> implements Iterable<T> {
 
     @Override
     public Iterator<T> iterator() {
-        return new Itr();
-    }
-
-    private class Itr implements Iterator<T> {
-
-        private int currentIdx = 0;
-
-        @Override
-        public boolean hasNext() {
-            return currentIdx < list.size();
-        }
-
-        @Override
-        public T next() {
-            if (!hasNext()) {
-                throw new NoSuchElementException();
-            }
-            return list.get(currentIdx++);
-        }
+        return list.iterator();
     }
 }
