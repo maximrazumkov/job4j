@@ -5,7 +5,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class UserUtil {
-
     public static void main(String[] args) {
         Map<Usr, Object> users = new HashMap<>();
         Calendar cal = Calendar.getInstance();

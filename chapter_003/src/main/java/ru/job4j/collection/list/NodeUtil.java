@@ -4,8 +4,9 @@ public class NodeUtil {
 
     public static boolean hasCycle(Node first) {
         boolean result = true;
-        if (first == null)
+        if (first == null) {
             result = false;
+        }
         Node tortoise = first;
         Node hare = first;
         while (result) {

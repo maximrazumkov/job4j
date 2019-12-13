@@ -42,12 +42,16 @@ public class Usr {
     }
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
         Usr usr = (Usr) o;
-        return children == usr.children &&
-                Objects.equals(name, usr.name) &&
-                Objects.equals(birthday, usr.birthday);
+        return children == usr.children
+                && Objects.equals(name, usr.name)
+                && Objects.equals(birthday, usr.birthday);
     }
 
     @Override
@@ -57,11 +61,11 @@ public class Usr {
 
     @Override
     public String toString() {
-        return "User{" +
-                "name='" + name + '\'' +
-                ", children=" + children +
-                ", birthday=" + birthday +
-                '}';
+        return "User{"
+                + "name='" + name + '\''
+                + ", children=" + children
+                + ", birthday=" + birthday
+                + '}';
     }
 
 }
