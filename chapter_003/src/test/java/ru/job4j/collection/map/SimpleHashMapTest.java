@@ -91,6 +91,12 @@ public class SimpleHashMapTest {
         assertThat(itr.hasNext(), is(false));
     }
 
+    @Test
+    public void whenForEarchItrEmpty() {
+        Iterator<SimpleHashMap.Entry<String, String>> itr = simpleHashMap.iterator();
+        assertThat(itr.hasNext(), is(false));
+    }
+
     @Test(expected = NoSuchElementException.class)
     public void whenThrowNoSuchElementException() {
         assertThat(simpleHashMap.insert("0", "Test1"), is(true));
