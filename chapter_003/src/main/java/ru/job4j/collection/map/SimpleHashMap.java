@@ -42,7 +42,7 @@ public class SimpleHashMap<K, V> implements Iterable<SimpleHashMap.Entry<K, V>> 
         if (result) {
             entrys[idx] = null;
         }
-        --mod;
+        ++mod;
         --count;
         return result;
     }
