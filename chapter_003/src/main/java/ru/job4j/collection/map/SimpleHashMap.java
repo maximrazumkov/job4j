@@ -1,4 +1,4 @@
-package ru.job4j.collection.Collections.map;
+package ru.job4j.collection.map;
 
 import java.util.*;
 
@@ -125,24 +125,22 @@ public class SimpleHashMap<K, V> implements Iterable<SimpleHashMap.Entry<K, V>> 
 
         @Override
         public boolean hasNext() {
-            boolean result = false;
-            if (currMod != mod) {
-                throw new ConcurrentModificationException();
-            }
-            for (int i = currIdx; remeining != 0; ++i) {
-                if (entrys[i] != null) {
-                    result = true;
-                    currIdx = i;
-                    break;
-                }
-            }
-            return result;
+            return remeining > 0;
         }
 
         @Override
         public Entry<K, V> next() {
+            if (currMod != mod) {
+                throw new ConcurrentModificationException();
+            }
             if (!hasNext()) {
                 throw new NoSuchElementException();
+            }
+            for (int i = currIdx; remeining != 0; ++i) {
+                if (entrys[i] != null) {
+                    currIdx = i;
+                    break;
+                }
             }
             --remeining;
             return entrys[currIdx++];
