@@ -11,28 +11,21 @@ public class Analizy {
             String start = null;
             String end = null;
             while ((line = reader.readLine()) != null) {
-                if (!"".equals(line)) {
-                    int sep = line.indexOf(" ");
-                    if (sep != -1) {
-                        String type = line.substring(0, sep);
-                        String time = line.substring(sep + 1);
-                        if (!"".equals(type) && !"".equals(time)) {
-                            if (type.equals("500") || type.equals("400")) {
-                                if (start == null) {
-                                    start = time;
-                                }
-                            } else {
-                                if (start != null) {
-                                    end = time;
-                                }
-                            }
-                            if (start != null && end != null) {
-                                out.println(start + ";" + end);
-                                start = null;
-                                end = null;
-                            }
-                        }
+                String time = line.substring(line.indexOf(" ") + 1);
+                if (line.startsWith("500") || line.startsWith("400")) {
+                    if (start == null) {
+                        start = time;
                     }
+                }
+                if (line.startsWith("200") || line.startsWith("300")) {
+                    if (start != null) {
+                        end = time;
+                    }
+                }
+                if (start != null && end != null) {
+                    out.println(start + ";" + end);
+                    start = null;
+                    end = null;
                 }
             }
         } catch (Exception e) {
