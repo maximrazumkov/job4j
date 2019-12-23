@@ -7,7 +7,6 @@ public class SimpleHashMap<K, V> implements Iterable<SimpleHashMap.Entry<K, V>> 
     private int size = 256;
     private int count = 0;
     private int mod = 0;
-    private int first = size;
 
     private Entry<K, V>[] entrys = new Entry[size];
 
@@ -20,9 +19,6 @@ public class SimpleHashMap<K, V> implements Iterable<SimpleHashMap.Entry<K, V>> 
             result = entrys[idx] == null;
        }
         if (result) {
-            if (idx < first) {
-                first = idx;
-            }
             entrys[idx] = new Entry<K, V>(key, value);
             ++count;
             ++mod;
@@ -41,9 +37,9 @@ public class SimpleHashMap<K, V> implements Iterable<SimpleHashMap.Entry<K, V>> 
         boolean result = entrys[idx] != null;
         if (result) {
             entrys[idx] = null;
+            ++mod;
+            --count;
         }
-        ++mod;
-        --count;
         return result;
     }
 
@@ -58,14 +54,10 @@ public class SimpleHashMap<K, V> implements Iterable<SimpleHashMap.Entry<K, V>> 
     private void resize() {
         if (entrys.length == count) {
             size *= 2;
-            first = size;
             Entry<K, V>[] newEntry = new Entry[size];
             for (Entry<K, V> old : entrys) {
                 int idx = calcEntryNum(old.key);
                 newEntry[idx] = old;
-                if (idx < first) {
-                    first = idx;
-                }
             }
             entrys = newEntry;
         }
@@ -120,7 +112,7 @@ public class SimpleHashMap<K, V> implements Iterable<SimpleHashMap.Entry<K, V>> 
     private class Itr implements Iterator<Entry<K, V>> {
 
         private int currMod = mod;
-        private int currIdx = first;
+        private int currIdx = 0;
         private int remeining = count;
 
         @Override
