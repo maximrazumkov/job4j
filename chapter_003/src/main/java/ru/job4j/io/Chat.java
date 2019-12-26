@@ -7,7 +7,7 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class Chat {
-    public static void main(String[] args) {
+    public void start() {
         String path = "chapter_003/data/phrases.txt";
         String target = "chapter_003/data/log.txt";
         List<String> phrases = new ArrayList<>();
@@ -42,5 +42,8 @@ public class Chat {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+    public static void main(String[] args) {
+        new Chat().start();
     }
 }
