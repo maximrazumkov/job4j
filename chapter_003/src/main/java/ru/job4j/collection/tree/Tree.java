@@ -34,8 +34,6 @@ public class Tree<E extends Comparable<E>> implements SimpleTree<E> {
         Optional<Node<E>> opt = findBy(parent);
         if (opt.isPresent()) {
             Node<E> par = opt.get();
-            List<Node<E>> children = par.leaves();
-            Node<E> newChild = new Node<>(child);
             if (!findBy(child).isPresent()) {
                 par.add(new Node<>(child));
                 result = true;
