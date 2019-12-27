@@ -1,7 +1,10 @@
 package ru.job4j.io;
 
 import org.junit.Before;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
+import org.junit.rules.TemporaryFolder;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -12,21 +15,35 @@ import static org.junit.Assert.assertThat;
 
 public class SearchTest {
 
-    private String dir;
+    @Rule
+    public TemporaryFolder temporaryFolder = new TemporaryFolder();
 
     @Before
     public void init() {
-        dir = System.getProperty("java.io.tmpdir");
+        try {
+            temporaryFolder.newFile("lib1.dll");
+            temporaryFolder.newFile("lib2.dll");
+            temporaryFolder.newFile("text1.txt");
+            temporaryFolder.newFile("text2.txt");
+            temporaryFolder.newFolder("tmp");
+            temporaryFolder.newFolder("img");
+            temporaryFolder.newFile("tmp/temp1.tmp");
+            temporaryFolder.newFile("tmp/temp2.tmp");
+            temporaryFolder.newFile("img/img1.png");
+            temporaryFolder.newFile("img/img2.png");
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("Привет");
+        }
     }
 
     @Test
     public void whenWithExt() {
-        System.out.printf("dir");
         Search search = new Search();
         List<String> exts = new ArrayList<>();
         exts.add("tmp");
         exts.add("dll");
-        List<File> files = search.files(dir, exts);
+        List<File> files = search.files(temporaryFolder.getRoot().getPath(), exts);
         for (File f: files) {
             String name = f.getName();
             String ext = name.substring(name.lastIndexOf(".") + 1);
@@ -36,10 +53,9 @@ public class SearchTest {
 
     @Test
     public void whenWithoutExt() {
-        System.out.printf("dir");
         Search search = new Search();
         List<String> exts = new ArrayList<>();
-        List<File> files = search.files(dir, exts);
+        List<File> files = search.files(temporaryFolder.getRoot().getPath(), exts);
         assertThat(files.isEmpty(), is(true));
     }
 }
