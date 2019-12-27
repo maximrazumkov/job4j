@@ -1,6 +1,7 @@
 package ru.job4j.io;
 
 import java.io.*;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
@@ -23,8 +24,8 @@ public class Zip {
         }
     }
 
-    public void seekBy(File source, File target) {
-
+    public List<File> seekBy(String root, String ext) {
+        return new ArrayList<>();
     }
 
     public static void main(String[] args) {
