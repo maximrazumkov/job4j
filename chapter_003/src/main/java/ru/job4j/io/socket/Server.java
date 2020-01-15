@@ -30,7 +30,7 @@ public class Server {
     }
 
     public static void main(String[] args) {
-        try (Socket socket = new ServerSocket(3000).accept()){
+        try (Socket socket = new ServerSocket(3000).accept()) {
             new Server(socket).start();
         } catch (Exception e) {
             e.printStackTrace();

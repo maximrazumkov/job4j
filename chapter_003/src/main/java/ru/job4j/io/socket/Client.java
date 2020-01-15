@@ -25,9 +25,12 @@ public class Client {
             out.flush();
             if (in.ready()) {
                 String str;
-                while ((str = in.readLine()).isEmpty()) {
-                    System.out.println(str);
-                }
+                do {
+                    str = in.readLine();
+                    if (str.isEmpty()) {
+                        System.out.println(str);
+                    }
+                } while (str.isEmpty());
             }
         } while (!"пока".equals(question));
     }
