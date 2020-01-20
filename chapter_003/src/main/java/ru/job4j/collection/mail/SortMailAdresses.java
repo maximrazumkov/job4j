@@ -21,31 +21,7 @@ public class SortMailAdresses {
                     key = newVal.getKey();
                 }
             }
-            //if (flag) {
             newList.put(key, val.getValue());
-            //}
-            //Set<String> newAddresses = new HashSet<>();
-            /*
-            Map<String, String> newAddresses = new HashMap<>();
-            String user = val.getKey();
-            for (String address : val.getValue()) {
-                if (!addresses.containsKey(address)) {
-                    //addresses.put(address, val.getKey());
-                    newAddresses.put(address, val.getKey());
-                    //newAddresses.add(address);
-                } else {
-                    user = addresses.get(address);
-                }
-
-            }
-            if (newList.containsKey(user)) {
-                Set<String> userAddresses = newList.get(user);
-                //userAddresses.addAll(newAddresses);
-            } else {
-                //newList.put(user, newAddresses);
-            }
-
-             */
         }
         return newList;
     }
