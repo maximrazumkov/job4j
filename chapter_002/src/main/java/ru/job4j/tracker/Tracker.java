@@ -5,7 +5,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 
-public class Tracker {
+public class Tracker implements ITracker<String> {
     /**
      * Массив для хранение заявок.
      */
