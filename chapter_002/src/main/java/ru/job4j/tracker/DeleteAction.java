@@ -9,7 +9,7 @@ public class DeleteAction extends BaseAction {
     }
 
     @Override
-    public boolean execute(Input input, Tracker tracker) {
+    public boolean execute(Input input, ITracker tracker) {
         super.getOutput().accept("Enter id: ");
         String id = input.askStr("");
         tracker.delete(id);
