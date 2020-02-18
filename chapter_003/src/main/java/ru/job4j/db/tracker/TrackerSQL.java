@@ -106,7 +106,8 @@ public class TrackerSQL implements ITracker<Integer>, AutoCloseable {
         try (PreparedStatement preStatement = connection.prepareStatement(query)) {
             preStatement.setString(1, item.getName());
             preStatement.setInt(2, id);
-            preStatement.executeUpdate();
+            int res = preStatement.executeUpdate();
+            result = res == 0 ? false : true;
         } catch (Exception e) {
             e.printStackTrace();
             result = false;
@@ -118,9 +119,10 @@ public class TrackerSQL implements ITracker<Integer>, AutoCloseable {
     public boolean delete(Integer id) {
         String query = "delete from item where id = ?";
         boolean result = true;
-        try (PreparedStatement preStatemt = connection.prepareStatement(query)) {
-            preStatemt.setInt(1, id);
-            preStatemt.executeUpdate();
+        try (PreparedStatement preStatement = connection.prepareStatement(query)) {
+            preStatement.setInt(1, id);
+            int res = preStatement.executeUpdate();
+            result = res == 0 ? false : true;
         } catch (Exception e) {
             e.printStackTrace();
             result = false;
