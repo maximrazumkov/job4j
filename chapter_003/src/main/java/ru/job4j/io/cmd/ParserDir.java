@@ -1,31 +1,28 @@
 package ru.job4j.io.cmd;
 
+import java.util.ArrayDeque;
+import java.util.Arrays;
+import java.util.Deque;
+
 public class ParserDir {
     public String parse(String srcDir, String newSrcDir) {
-        String root = newSrcDir.startsWith("/") ? "/" : srcDir;
-        StringBuilder stringBuilder = new StringBuilder(root);
-        String str = new StringBuilder(newSrcDir).toString();
-        while (str.length() != 0) {
-            int pos = str.indexOf('/');
-            String newSubStr = (pos != -1) ? str.substring(0, pos) : str;
+        Deque<String> newDir = newSrcDir.startsWith("/") ? new ArrayDeque<>() : new ArrayDeque<>(Arrays.asList(srcDir.split("/")));
+        String[] strs = newSrcDir.split("/");
+        for (String newSubStr : strs) {
             switch (newSubStr) {
                 case "":
                 case ".":
-                    newSubStr += "/";
                     break;
                 case "..":
-                    int i = stringBuilder.lastIndexOf("/");
-                    stringBuilder = (i == 0) ? new StringBuilder("/") : new StringBuilder(stringBuilder.substring(0, i));
+                    newDir.pollLast();
                     break;
                 default:
-                    if (!stringBuilder.toString().equals("/")) {
-                        stringBuilder.append("/");
-                    }
-                    stringBuilder.append(newSubStr);
+                    newDir.addLast(newSubStr);
                     break;
             }
-            str = str.replaceFirst(newSubStr, "");
         }
-        return stringBuilder.toString();
+        String[] s = newDir.toArray(new String[newDir.size()]);
+        String result = String.join("/", s);
+        return result.startsWith("/") ? result : "/" + result;
     }
 }
