@@ -8,7 +8,6 @@ import java.sql.*;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Properties;
-import java.util.concurrent.ExecutionException;
 
 public class TrackerSQL implements ITracker<Integer>, AutoCloseable {
 

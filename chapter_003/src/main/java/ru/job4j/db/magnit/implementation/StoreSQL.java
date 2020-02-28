@@ -38,7 +38,7 @@ public class StoreSQL implements ServiceDB, AutoCloseable {
                 }
             }
             for (int i = 0; i < size; ++i) {
-                ps.setInt( i + 1, i);
+                ps.setInt(i + 1, i);
             }
             ps.executeUpdate();
             connect.commit();
@@ -59,7 +59,7 @@ public class StoreSQL implements ServiceDB, AutoCloseable {
         List<Entry> entries = new LinkedList<>();
         try (Statement st = connect.createStatement()) {
             ResultSet rs = st.executeQuery(query);
-            while(rs.next()) {
+            while (rs.next()) {
                 entries.add(new Entry(rs.getInt(1)));
             }
         } catch (Exception e) {

@@ -16,7 +16,7 @@ public class StoreXml implements Converter<Entrys> {
 
     @Override
     public void convert(Entrys value) {
-        try (PrintWriter writer = new PrintWriter(new FileOutputStream(target));){
+        try (PrintWriter writer = new PrintWriter(new FileOutputStream(target))) {
             JAXBContext context = JAXBContext.newInstance(Entrys.class);
             Marshaller marshaller = context.createMarshaller();
             marshaller.setProperty(Marshaller.JAXB_ENCODING, "UTF-8");
