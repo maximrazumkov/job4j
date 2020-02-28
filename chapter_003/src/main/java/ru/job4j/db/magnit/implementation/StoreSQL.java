@@ -20,15 +20,10 @@ public class StoreSQL implements ServiceDB, AutoCloseable {
 
     public void generate(int size) {
         String deleteQuery = "delete from Entry";
-        StringBuilder insertQuery = new StringBuilder("insert into Entry(id) values ");
-        for (int i = 0; i < size; ++i) {
-            insertQuery.append("(?), ");
-        }
-        insertQuery.deleteCharAt(insertQuery.length() - 2);
         List<Entry> entries = load();
         try (
                 Statement st = connect.createStatement();
-                PreparedStatement ps = connect.prepareStatement(insertQuery.toString());
+                PreparedStatement ps = connect.prepareStatement("insert into Entry(id) values (?)");
         ) {
             connect.setAutoCommit(false);
             if (!entries.isEmpty()) {
@@ -38,9 +33,10 @@ public class StoreSQL implements ServiceDB, AutoCloseable {
                 }
             }
             for (int i = 0; i < size; ++i) {
-                ps.setInt(i + 1, i);
+                ps.setInt(1, i);
+                ps.addBatch();
             }
-            ps.executeUpdate();
+            ps.executeBatch();
             connect.commit();
             connect.setAutoCommit(true);
         } catch (Exception e) {
