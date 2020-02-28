@@ -3,69 +3,20 @@ package ru.job4j.db.tracker;
 import ru.job4j.tracker.ITracker;
 import ru.job4j.tracker.Item;
 
-import java.io.InputStream;
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Properties;
 
 public class TrackerSQL implements ITracker<Integer>, AutoCloseable {
 
-    private Connection connection;
+    private final Connection connection;
 
-    public boolean init() {
-        try (InputStream in = TrackerSQL.class.getClassLoader().getResourceAsStream("app.properties")) {
-            Properties config = new Properties();
-            config.load(in);
-            Class.forName(config.getProperty("driver-class-name"));
-            createBD(config);
-            this.connection = DriverManager.getConnection(
-                    config.getProperty("url"),
-                    config.getProperty("username"),
-                    config.getProperty("password")
-
-            );
-            createTablesDb();
-        } catch (Exception e) {
-            throw new IllegalStateException(e);
-        }
-        return this.connection != null;
+    public TrackerSQL(Connection connection) {
+        this.connection = connection;
     }
-
-    private void createTablesDb() throws Exception {
-        String query = String.format("create table if not exists item(id serial primary key, name varchar(250));");
-        try (Statement statement = connection.createStatement()) {
-            statement.executeUpdate(query);
-        } catch (Exception e) {
-            throw e;
-        }
-    }
-
-    private void createBD(Properties config) throws Exception {
-        String url = config.getProperty("url");
-        String nameDb = url.substring(url.lastIndexOf("/") + 1);
-        String urlWithoutBd = url.substring(0, url.lastIndexOf("/") + 1);
-        try (
-            Connection connection = DriverManager.getConnection(
-                    urlWithoutBd,
-                    config.getProperty("username"),
-                    config.getProperty("password")
-
-            )
-        ) {
-            PreparedStatement preStatement = connection.prepareStatement("select 1 from pg_database where datname = ?");
-            preStatement.setString(1, nameDb);
-            ResultSet rs = preStatement.executeQuery();
-            if (!rs.next()) {
-                String query = String.format("create database %s with owner = postgres encoding = 'UTF8' TABLESPACE = pg_default", nameDb);
-                Statement statement = connection.createStatement();
-                statement.executeUpdate(query);
-            }
-        } catch (Exception e) {
-            throw e;
-        }
-    }
-
 
     @Override
     public void close() throws Exception {
@@ -77,8 +28,6 @@ public class TrackerSQL implements ITracker<Integer>, AutoCloseable {
             } catch (Exception t) {
 
             }
-        } finally {
-            connection = null;
         }
     }
 
